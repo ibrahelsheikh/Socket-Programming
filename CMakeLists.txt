@@ -8,4 +8,4 @@ add_executable(Socket_Programming
         .idea/modules.xml
         .idea/Socket-Programming.iml
         .idea/workspace.xml
-        main.c socket_client.c socket_server.c)
+        socket_client.c socket_server.c)
