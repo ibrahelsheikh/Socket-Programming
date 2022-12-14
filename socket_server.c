@@ -118,7 +118,7 @@ int main() {
      //We read this request using the recv() function
      printf("Reading request...\n");
 	 char request[1024];
-     recv(socoket_, read, 1024, 0);
+     recv(socket_client, read, 1024, 0);
 
 	 int bytes_received = strlen(request);
 

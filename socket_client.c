@@ -16,7 +16,7 @@
 
 #include <stdio.h>
 #include <string.h>
-A
+
 //define some macros
 #define ISVALIDSOCKET(s) ((s) >= 0)
 #define CLOSESOCKET(s) close(s)
