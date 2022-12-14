@@ -2,6 +2,17 @@
 // Created by ibrah on 12/13/2022.
 //
 
+
+/* Server:
+   1. define an (IP address + port number) for the server
+   2. create a socket (server socket)
+   3. bind the socket to the address
+   4. start listening for connections
+   5. accept any incoming connection
+   6. send and receive data to and from the client
+   7. close the socket
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -45,12 +56,12 @@ int main() {
     }
 
     // 4. accept a connection
-    struct sockaddr_in connentclientAddress;
-    memset(&connentclientAddress, 0, sizeof(connentclientAddress));
+    struct sockaddr_in client_address;
+    memset(&client_address, 0, sizeof(client_address));
 
     int clientaddrlenght = 0;
 
-    int connectionServerSockFD= accept(serverSocketFD, (struct sockaddr *) &connentclientAddress, &clientaddrlenght);
+    int connectionServerSockFD= accept(serverSocketFD, (struct sockaddr *) &client_address, &clientaddrlenght);
 
     if (connectionServerSockFD == -1) {
         printf("Faild to accept connection\n");

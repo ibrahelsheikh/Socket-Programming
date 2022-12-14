@@ -1,4 +1,4 @@
-//student_name: write_your_name
+//student_name: ibrahim Elsheikh
 
 /* ***Introduction to socket programming***
 --A socket is one endpoint of a communication link between systems.
@@ -70,13 +70,13 @@ int main() {
 	 hints.ai_socktype = SOCK_STREAM;  //set the value to specify the socket type as TCP
 	 hints.ai_flags = AI_PASSIVE;
 	 struct addrinfo *bind_address;
-	 getaddrinfo(0, "8090", &hints, &bind_address); //port number is 8090, if it's busy on your device change it // host name is 0
+	 getaddrinfo("127.0.9.1", "8090", &hints, &bind_address); //port number is 8090, if it's busy on your device change it // host name is 0
                                                     //you will know whether it's busy or not when you run the code	 
 	 
 	 //create the socket
 	 printf("Creating socket...\n");
 	 SOCKET socket_listen;
-	 socket_listen = /*API_to_create_socket*/(bind_address->ai_family, bind_address->ai_socktype, bind_address->ai_protocol);
+	 socket_listen = /*API_to_create_socket*/socket(bind_address->ai_family, bind_address->ai_socktype, bind_address->ai_protocol);
 	                            //find the missing function name
 	 
 	 //check that the call to socket() was successful
@@ -88,7 +88,7 @@ int main() {
 	 
 	 //call bind() to associate it with our address from getaddrinfo():
 	 printf("Binding socket to local address...\n");
-	 if (bind(/*socket_variable*/ ,bind_address->ai_addr, bind_address->ai_addrlen)) //find the missing parameter name
+	 if (bind(/*socket_variable*/socket_listen ,bind_address->ai_addr, bind_address->ai_addrlen)) //find the missing parameter name
 	 {
 		 fprintf(stderr, "bind() failed. (%d)\n", GETSOCKETERRNO());
 		 return 1;
@@ -97,7 +97,7 @@ int main() {
 	 
 	 //start listening for connections
 	 printf("Listening...\n");
-	 if (/*API_to_listen*/listen(/*socket_variable_to_listen_on*/, 10) < 0) //find the missing function and parameter names
+	 if (/*API_to_listen*/listen(/*socket_variable_to_listen_on*/socket_listen, 10) < 0) //find the missing function and parameter names
 	 {
 		 fprintf(stderr, "listen() failed. (%d)\n", GETSOCKETERRNO());
 		 return 1;
@@ -107,7 +107,7 @@ int main() {
      printf("Waiting for connection...\n");
 	 struct sockaddr_storage client_address;
 	 socklen_t client_len = sizeof(client_address);
-	 SOCKET socket_client = /*API_to_accept*/(/*socket_variable*/,(struct sockaddr*) &client_address, &client_len);
+	 SOCKET socket_client = /*API_to_accept*/accept(/*socket_variable*/socket_listen,(struct sockaddr*) &client_address, &client_len);
 	                                                          //find the missing function and parameter names
 	 if (!ISVALIDSOCKET(socket_client)) 
 	 {
@@ -118,7 +118,11 @@ int main() {
      //We read this request using the recv() function
      printf("Reading request...\n");
 	 char request[1024];
-	 int bytes_received = //use recv() function to receive the incoming packet and save it in the *request* variable defined
+     recv(socoket_, read, 1024, 0);
+
+	 int bytes_received = strlen(request);
+
+             //use recv() function to receive the incoming packet and save it in the *request* variable defined
 	 printf("Received %d bytes.\n", bytes_received);
 	 
 	 //print the client's request to the console

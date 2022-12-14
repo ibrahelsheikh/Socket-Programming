@@ -16,7 +16,7 @@
 
 #include <stdio.h>
 #include <string.h>
-
+A
 //define some macros
 #define ISVALIDSOCKET(s) ((s) >= 0)
 #define CLOSESOCKET(s) close(s)
@@ -26,7 +26,7 @@
 int main() {
 
     //set the following
-    const char *server_hostname = "127.0.0.1";  //with loopback ip address
+    const char *server_hostname = "127.0.9.1";  //with loopback ip address
     const char *server_portnum = "8090";   //with the port number we set for the server
 
     //configure a remote address for connection
