@@ -118,7 +118,7 @@ int main() {
      //We read this request using the recv() function
      printf("Reading request...\n");
 	 char request[1024];
-     recv(socket_client, read, 1024, 0);
+     recv(socket_client, request, 1024, 0);
 
 	 int bytes_received = strlen(request);
 
@@ -130,9 +130,10 @@ int main() {
 	 
 	 //send our response back
 	 printf("Sending response...\n");
-	 char response[] = "Hello";
+	 char response[] = "Hello" ;
 	 strcat(response,request);
-	 int bytes_sent = //use send() function to send the *response* back to the client
+	 int bytes_sent =  send(socket_client, request, strlen(request), 0);
+             //use send() function to send the *response* back to the client
 	 printf("Sent %d of %d bytes.\n", bytes_sent, (int)strlen(response));
 	 
 	 
