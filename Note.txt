@@ -1,4 +1,0 @@
-only work in liunx
-tested on WSL
-and ubuntu 22.04
-widows 11

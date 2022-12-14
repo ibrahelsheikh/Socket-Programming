@@ -41,6 +41,8 @@
 
 //Follow along the code and Complete the commented parts
 
+//TCP INT =6
+
 //include the needed headers
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -49,7 +51,6 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <errno.h>
-
 #include <stdio.h>
 #include <string.h>
 
@@ -66,10 +67,10 @@ int main() {
 	 struct addrinfo hints;
 	 memset(&hints, 0, sizeof(hints));
 	 hints.ai_family = AF_INET;
-	 hints.ai_socktype = //---;  //set the value to specify the socket type as TCP 
+	 hints.ai_socktype = SOCK_STREAM;  //set the value to specify the socket type as TCP
 	 hints.ai_flags = AI_PASSIVE;
 	 struct addrinfo *bind_address;
-	 getaddrinfo(0, "8090", &hints, &bind_address); //port number is 8090, if it's busy on your device change it 
+	 getaddrinfo(0, "8090", &hints, &bind_address); //port number is 8090, if it's busy on your device change it // host name is 0
                                                     //you will know whether it's busy or not when you run the code	 
 	 
 	 //create the socket
@@ -87,7 +88,7 @@ int main() {
 	 
 	 //call bind() to associate it with our address from getaddrinfo():
 	 printf("Binding socket to local address...\n");
-	 if (bind(/*socket_variable*/,bind_address->ai_addr, bind_address->ai_addrlen)) //find the missing parameter name
+	 if (bind(/*socket_variable*/ ,bind_address->ai_addr, bind_address->ai_addrlen)) //find the missing parameter name
 	 {
 		 fprintf(stderr, "bind() failed. (%d)\n", GETSOCKETERRNO());
 		 return 1;
@@ -96,7 +97,7 @@ int main() {
 	 
 	 //start listening for connections
 	 printf("Listening...\n");
-	 if (/*API_to_listen*/(/*socket_variable_to_listen_on*/, 10) < 0) //find the missing function and parameter names
+	 if (/*API_to_listen*/listen(/*socket_variable_to_listen_on*/, 10) < 0) //find the missing function and parameter names
 	 {
 		 fprintf(stderr, "listen() failed. (%d)\n", GETSOCKETERRNO());
 		 return 1;
@@ -142,23 +143,3 @@ int main() {
 	 printf("Finished.\n");
      return 0;
 }
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
