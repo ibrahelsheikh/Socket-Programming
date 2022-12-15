@@ -127,13 +127,14 @@ int main() {
 	 
 	 //print the client's request to the console
 	 printf("%.*s", bytes_received, request);   
-	 
+
+
 	 //send our response back
 	 printf("Sending response...\n");
 	 char response[] = "Hello " ;
 	 strcat(response,request );
 
-	 int bytes_sent =  send(socket_client, response, strlen(reponse), 0);
+	 int bytes_sent =  send(socket_client, response, strlen(response), 0);
              //use send() function to send the *response* back to the client
 	 printf("Sent %d of %d bytes.\n", bytes_sent, (int)strlen(response));
 	 
