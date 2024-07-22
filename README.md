@@ -1,7 +1,7 @@
 # Socket programming 
 
 ### only work in liunx tested on WSL ubuntu 22.04 windows 11
-[video in youtube](https://youtu.be/MUA3mRvVaxU)
+[video in youtube](https://youtu.be/MUA3mRvVaxU){:target="_blank"}
 
 ![StatediagramforserverandclientmodelofSocketdrawio2-448x660](https://user-images.githubusercontent.com/77652042/207916585-2874e45a-8e44-443e-814c-0eb97c0d62b2.png)
 
